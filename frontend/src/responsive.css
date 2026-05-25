@@ -1,0 +1,545 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Quiz Learner — Complete Mobile Responsive CSS
+   Covers every page, every role, every screen size
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Global: prevent horizontal scroll ──────────────────────────────────── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ── iOS zoom fix ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  input, select, textarea { font-size: 16px !important; }
+}
+
+/* ── Touch targets ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  button, a { min-height: 40px; }
+}
+
+/* ── Remove tap highlight ────────────────────────────────────────────────── */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NAVBAR
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .navbar-desktop { display: none !important; }
+  .navbar-hamburger { display: flex !important; }
+  .desktop-only { display: none !important; }
+  .navbar-badge { display: none !important; }
+  .navbar { padding: 0.5rem 0.8rem !important; }
+}
+@media (min-width: 769px) {
+  .mobile-only { display: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LANDING PAGE — uses clamp() so already good, small extras needed
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Hide brain emoji on tiny phones */
+  .hero-illustration { display: none !important; }
+
+  /* CTA section font */
+  [style*="fontSize: '2rem'"][style*="fontWeight: 700"][style*="marginBottom: '1rem'"] {
+    font-size: 1.4rem !important;
+  }
+
+  /* Feature grid → 1 col on tiny */
+  [style*="minmax(200px, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 400px) {
+  [style*="minmax(200px, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LOGIN & SIGNUP CARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* Login wrapper padding */
+  [style*="minHeight: '90vh'"][style*="padding: '2rem'"] {
+    padding: 1rem !important;
+    align-items: flex-start !important;
+    padding-top: 2rem !important;
+  }
+
+  /* Login card */
+  [style*="maxWidth: 440"],
+  [style*="maxWidth: 420"] {
+    padding: 1.5rem 1rem !important;
+    border-radius: 16px !important;
+  }
+
+  /* Tab buttons */
+  [style*="borderRadius: '12px'"][style*="padding: '4px'"] button {
+    font-size: 0.72rem !important;
+    padding: 0.4rem 0.2rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DASHBOARDS — Student, Teacher, Admin (padding: '1rem', maxWidth:1200)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Stat cards grid → 2 per row */
+  [style*="minmax(180px, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.8rem !important;
+  }
+
+  /* Dashboard title */
+  [style*="fontSize: '2rem'"][style*="fontWeight: 700"][style*="marginBottom: '0.3rem'"] {
+    font-size: 1.5rem !important;
+  }
+
+  /* Action buttons row */
+  [style*="display: 'flex'"][style*="gap: '0.8rem'"][style*="flexWrap: 'wrap'"],
+  [style*="display: 'flex'"][style*="gap: '1rem'"][style*="flexWrap: 'wrap'"] {
+    gap: 0.5rem !important;
+  }
+
+  /* Recent quiz list — stack rows */
+  [style*="whileHover"][style*="borderRadius: '12px'"][style*="padding: '1rem 1.5rem'"] {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Stat cards → 1 per row on tiny phone */
+  [style*="minmax(180px, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MANAGE QUIZZES — padding: 2rem 3rem
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  [style*="padding: '2rem 3rem'"][style*="maxWidth: 1200"] {
+    padding: 1rem !important;
+  }
+
+  /* Quiz cards grid → 1 col */
+  [style*="minmax(300px, 1fr)"],
+  [style*="minmax(280px, 1fr)"],
+  [style*="minmax(260px, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Header row */
+  [style*="justifyContent: 'space-between'"][style*="marginBottom: '2rem'"][style*="flexWrap: 'wrap'"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.8rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   USER MANAGEMENT — padding: 2rem 3rem
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  [style*="padding: '2rem 3rem'"][style*="maxWidth: 1200"]:not([style*="1fr 1fr"]) {
+    padding: 1rem !important;
+  }
+
+  /* Table wrapper — scroll horizontally */
+  .tableWrap,
+  [style*="overflowX: 'auto'"] {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  table {
+    min-width: 520px !important;
+    font-size: 0.8rem !important;
+  }
+
+  th, td {
+    padding: 0.6rem 0.8rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Filter buttons — scroll */
+  [style*="display: 'flex'"][style*="gap: '0.8rem'"][style*="marginBottom: '1.5rem'"] {
+    overflow-x: auto !important;
+    padding-bottom: 0.3rem !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CREATE QUIZ PAGE
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Form grid → single col */
+  [style*="repeat(auto-fit, minmax(200px"],
+  [style*="repeat(auto-fit, minmax(220px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Question options grid → 1 col */
+  [style*="gridTemplateColumns: '1fr 1fr'"][style*="gap: '0.5rem'"],
+  [style*="gridTemplateColumns: '1fr 1fr'"][style*="gap: '0.8rem'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Quiz type buttons */
+  [style*="display: 'flex'"][style*="gap: '1rem'"][style*="marginBottom: '1.5rem'"] {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  /* ChatGPT generator section */
+  [style*="display: 'flex'"][style*="gap: '0.8rem'"][style*="alignItems: 'center'"] {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BROWSE QUIZZES — padding: 1rem, grid minmax(260px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Quiz cards → 1 col */
+  [style*="minmax(260px, 1fr)"],
+  [style*="minmax(240px, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Filter selects — full width */
+  [style*="flex: '1 1 140px'"] {
+    flex: 1 1 100% !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ATTEMPT QUIZ — maxWidth: 800
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Options grid → 1 col */
+  [style*="gridTemplateColumns: '1fr 1fr'"][style*="gap: '1rem'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Question dots row */
+  [style*="display: 'flex'"][style*="flexWrap: 'wrap'"][style*="gap: '0.4rem'"] {
+    gap: 0.25rem !important;
+  }
+
+  /* Dot size smaller */
+  [style*="width: 12"][style*="height: 12"][style*="borderRadius: '50%'"] {
+    width: 9px !important;
+    height: 9px !important;
+    min-height: unset !important;
+  }
+
+  /* Timer */
+  [style*="fontSize: '1.5rem'"][style*="fontWeight: 700"][style*="color"] {
+    font-size: 1.1rem !important;
+  }
+
+  /* Prev / Next buttons row */
+  [style*="justifyContent: 'space-between'"][style*="marginTop"] {
+    gap: 0.5rem !important;
+  }
+
+  /* Scheduled card */
+  [style*="borderRadius: '24px'"][style*="padding: '3rem'"][style*="textAlign: 'center'"] {
+    padding: 1.5rem 1rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESULT PAGE — maxWidth: 800
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Score card */
+  [style*="borderRadius: '24px'"][style*="padding: '3rem'"][style*="textAlign: 'center'"][style*="marginBottom: '2rem'"] {
+    padding: 1.5rem 1rem !important;
+  }
+
+  /* Big score number */
+  [style*="fontSize: '4rem'"][style*="fontWeight: 800"][style*="lineHeight: 1"] {
+    font-size: 2.8rem !important;
+  }
+
+  /* Stats row → 2 cols */
+  [style*="repeat(3, 1fr)"][style*="gap: '1rem'"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CODING EDITOR — split layout
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  /* Stack problem + editor vertically */
+  div[style*="display: 'flex'"][style*="overflow: 'hidden'"][style*="height"] {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+
+  /* Problem panel → full width */
+  div[style*="width: '40%'"],
+  div[style*='width: "40%"'] {
+    width: 100% !important;
+    max-height: 45vh !important;
+    overflow-y: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+
+  /* Editor panel → full width */
+  div[style*="width: '60%'"],
+  div[style*='width: "60%"'] {
+    width: 100% !important;
+    min-height: 50vh !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Top bar of coding editor */
+  [style*="justifyContent: 'space-between'"][style*="padding: '0.8rem'"][style*="borderBottom"] {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Run/Submit buttons */
+  [style*="padding: '0.5rem 1.2rem'"][style*="borderRadius: '8px'"][style*="fontWeight: 600"] {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.82rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ATTENDANCE PORTAL
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Student rows */
+  [style*="display: 'flex'"][style*="alignItems: 'center'"][style*="justifyContent: 'space-between'"][style*="padding: '0.8"] {
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+  }
+
+  /* Mark buttons */
+  [style*="padding: '0.3rem 0.8rem'"][style*="borderRadius: '8px'"] {
+    padding: 0.3rem 0.5rem !important;
+    font-size: 0.78rem !important;
+    min-height: 36px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NOTES PAGE
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  [style*="minmax(280px, 1fr)"],
+  [style*="minmax(300px, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TIMETABLE
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  [style*="minmax(240px, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PERFORMANCE ANALYTICS
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Charts shrink */
+  [style*="height: 300"] { height: 220px !important; }
+  [style*="height: 350"] { height: 240px !important; }
+
+  /* Stats → 2 cols */
+  [style*="repeat(auto-fit, minmax(160"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   QUIZ ANALYTICS
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  [style*="repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  [style*="height: 320"] { height: 220px !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MY ATTENDANCE
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  [style*="repeat(auto-fit, minmax(150"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  [style*="justifyContent: 'space-between'"][style*="padding: '1rem 1.2rem'"] {
+    flex-wrap: wrap !important;
+    gap: 0.4rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BROWSE CHALLENGES
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  [style*="minmax(320px, 1fr)"],
+  [style*="minmax(300px, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CREATE CHALLENGE (Teacher)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Form grids */
+  [style*="repeat(auto-fit, minmax(200px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Test case grid */
+  [style*="gridTemplateColumns: '1fr 1fr'"][style*="gap: '1rem'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Page padding */
+  [style*="padding: '2rem 3rem'"][style*="maxWidth: 1000"] {
+    padding: 1rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AI QUIZ GENERATOR (3-step wizard)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Wizard container */
+  [style*="maxWidth: 820"][style*="margin: '0 auto'"] {
+    padding: 1rem !important;
+  }
+
+  /* Step indicator text */
+  [style*="fontSize: 11"][style*="fontWeight: 600"] {
+    font-size: 9px !important;
+  }
+
+  /* Step circle smaller */
+  [style*="width: 36"][style*="height: 36"][style*="borderRadius: '50%'"] {
+    width: 28px !important;
+    height: 28px !important;
+    min-height: unset !important;
+    font-size: 12px !important;
+  }
+
+  /* Quick examples wrap */
+  [style*="display: 'flex'"][style*="flexWrap: 'wrap'"][style*="gap: 8"] {
+    gap: 5px !important;
+  }
+
+  /* Generated question options grid */
+  [style*="gridTemplateColumns: '1fr 1fr'"][style*="gap: 8"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Schedule form grid */
+  [style*="gridTemplateColumns: '1fr 1fr'"][style*="gap: 16"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCHEDULED QUIZZES PAGE
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Quiz row cards */
+  [style*="display: 'flex'"][style*="alignItems: 'center'"][style*="gap: 16"][style*="flexWrap: 'wrap'"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION RESULTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  [style*="overflowX: 'auto'"] {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ADMIN — PLATFORM ANALYTICS
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  [style*="repeat(auto-fit, minmax(180"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  [style*="fontSize: '2.5rem'"] { font-size: 1.8rem !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ADMIN DASHBOARD — create section buttons
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  [style*="display: 'flex'"][style*="gap: '1rem'"][style*="flexWrap: 'wrap'"] {
+    gap: 0.6rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GENERAL — Any page with 2rem 3rem padding
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  [style*="padding: '2rem 3rem'"] {
+    padding: 1rem !important;
+  }
+
+  [style*="padding: '1.5rem 2rem'"] {
+    padding: 1rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  [style*="fontSize: '4rem'"]   { font-size: 2.5rem !important; }
+  [style*="fontSize: '3rem'"]   { font-size: 2rem !important; }
+  [style*="fontSize: '2.5rem'"] { font-size: 1.7rem !important; }
+  [style*="fontSize: '2rem'"]   { font-size: 1.4rem !important; }
+  [style*="fontSize: '10rem'"]  { display: none !important; }
+  [style*="fontSize: '8rem'"]   { font-size: 4rem !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HELPER UTILITY CLASSES (use in JSX className if needed)
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .mobile-hide   { display: none !important; }
+  .mobile-full   { width: 100% !important; }
+  .mobile-center { text-align: center !important; }
+  .mobile-col    { flex-direction: column !important; }
+  .mobile-wrap   { flex-wrap: wrap !important; }
+  .mobile-pad    { padding: 1rem !important; }
+  .mobile-small  { font-size: 0.85rem !important; }
+}
