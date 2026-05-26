@@ -1,26 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
+    "experimentalServices": {
+        "frontend": {
+            "root": "Quiz-Learner-with-AI/Quiz-Learner-main/frontend",
+            "routePrefix": "/",
+            "framework": "create-react-app"
+        },
+        "backend": {
+            "root": "Quiz-Learner-with-AI/Quiz-Learner-main/backend",
+            "routePrefix": "/_/backend"
+        }
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
-    }
-  ]
 }
